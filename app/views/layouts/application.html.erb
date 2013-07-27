@@ -9,9 +9,12 @@
 <body>
     <div class="navbar">
       <div class="navbar-inner">
-        <a class="brand" href="#">Messageboard</a>
-        <ul class="nav">
+        <%= link_to "Messageboard", root_path, class: "brand"%>
+        <ul class="nav pull-right">
           <% if user_signed_in? %>
+              <li class="navbar-text">
+                <%= current_user.email %>
+              </li>
               <li>
                 <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
               </li>
@@ -19,10 +22,10 @@
               <li>
                 <%= link_to('Login', new_user_session_path)  %>
               </li>
+              <li>
+                <%= link_to "Sign up", new_user_registration_path %>
+              </li>
           <% end %>
-          <li>
-            <%= link_to "Sign up", new_user_registration_path %>
-          </li>
         </ul>
       </div>
     </div>
